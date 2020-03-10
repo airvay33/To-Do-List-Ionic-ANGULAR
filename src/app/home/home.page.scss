@@ -17,7 +17,7 @@
   font-size: 16px;
   line-height: 22px;
 
-  color: #8c8c8c;
+  color: #e9e5e5;
 
   margin: 0;
 }
@@ -28,4 +28,34 @@
 
 ion-content ion-toolbar {
   --background: translucent;
+}
+.bg-img {
+  padding: 1px;
+  height: 100%;
+  width: 100%;
+  background-image: url('../../assets/bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+h1 {
+  color: #e96913;
+  margin-left: 20px;
+  font-size: 30px;
+}
+h5 {
+  color: #8c8c8c;
+  margin-left: 20px;
+  margin-top: -7px;
+  font-size: medium;
+  margin-bottom: 15px;
+  text-transform: capitalize;
+}
+
+.add-button {
+    --background: #2d2e2a;
+    position: absolute;
+    bottom: 5px;
+    width: 96%;
+    --color: #fffefe;
+    margin-left: 2%;
 }

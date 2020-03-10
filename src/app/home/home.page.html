@@ -1,20 +1,60 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+  <ion-header><!--Title ios -->
+    <ion-toolbar color="primary">
+      <ion-title>
+        Ionic Todolist
+      </ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="getTasks()">
+        <ion-icon name="refresh" slot="icon-only"></ion-icon>
+      </ion-button>
+      </ion-buttons>
     </ion-toolbar>
   </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+<ion-content><!--Title Android -->
+    <ion-header collapse="condense">
+      <ion-toolbar color="primary">
+          <ion-title size="large">Andromède</ion-title>
+        </ion-toolbar>
+    </ion-header>
+   <div class="bg-img"><!--image bg-->
+      </div>
+   <div id="container"><!--Heure et Items-->
+      <h5> {{ currentDate }}</h5>
+      <ion-card *ngFor="let item of tasks">
+          <ion-item-sliding>
+                <ion-item>
+                  <ion-checkbox (ionChange)="changeCheckState(item)" [(ngModel)]="item.checked" color="success" slot="start">
+                  </ion-checkbox>
+                  <ion-label>
+                    <h2>{{ item.text }}</h2>
+                    <p>{{ item.hour }}</p>
+                  </ion-label>
+                </ion-item>
+                <ion-item-options side="end">
+                <ion-item-option color="danger" (click)="deleteTask(item)">
+                  <ion-icon name="trash" slot="icon-only"></ion-icon>
+                </ion-item-option>
+            </ion-item-options>
+          </ion-item-sliding>
+      </ion-card>
+        <ion-card *ngIf="addTask"><!--Bouton Ajouter une tâche-->
+            <ion-item>
+              <ion-input [(ngModel)]="myTask" placeholder="Entrer une tâche"></ion-input>
+              <ion-button (click)="addTaskToFirebase()" shape="round" slot="end">
+                <ion-icon slot="icon-only" name="add"></ion-icon>
+              </ion-button>
+            </ion-item>
+        </ion-card>
   </div>
+   <ion-button *ngIf="!addTask" (click)="showForm()" expand="block" class="add-button"><!--Bouton Ajouter-->
+          <ion-icon name="add" slot="start"></ion-icon>
+           Ajouter une tâche
+          </ion-button>
+    <ion-button *ngIf="addTask" (click)="showForm()" expand="block" class="add-button"><!--Bouton Annuler-->
+           <ion-icon name="close" slot="start"></ion-icon>
+          Annuler
+    </ion-button>
 </ion-content>
+
+
+
